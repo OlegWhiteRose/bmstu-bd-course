@@ -524,6 +524,7 @@ void MainWindow::saveChanges()
     QMessageBox::information(this, "Успех", "Изменения сохранены!");
 }
 
+// Измененный метод openSecondForm
 void MainWindow::openSecondForm()
 {
     int currentRow = ui->clientTable->currentRow();
@@ -543,7 +544,8 @@ void MainWindow::openSecondForm()
 
     if (!secondForm)
     {
-        secondForm = new SecondForm(this);
+        secondForm = new SecondForm();  // Убрали parent
+        connect(secondForm, &SecondForm::returnToMainWindow, this, &MainWindow::show);
     }
     secondForm->setClientId(clientId);
     secondForm->loadTransactions();

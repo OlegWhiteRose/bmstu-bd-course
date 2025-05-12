@@ -18,6 +18,9 @@ public:
     void setClientId(int clientId);
     void loadTransactions();
 
+signals:
+    void returnToMainWindow();  // Добавили сигнал
+
 private slots:
     void onBackButtonClicked();
     void onFilterButtonClicked();

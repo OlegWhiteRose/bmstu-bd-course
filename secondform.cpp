@@ -1,11 +1,12 @@
 #include "secondform.h"
 #include "ui_secondform.h"
+#include "mainwindow.h"  // Добавили include
 #include <QSqlQuery>
-#include <QSqlDatabase>
 #include <QSqlError>
 #include <QMessageBox>
 #include <QTableWidgetItem>
 #include <QDebug>
+
 
 SecondForm::SecondForm(QWidget *parent) :
     QWidget(parent),
@@ -13,6 +14,7 @@ SecondForm::SecondForm(QWidget *parent) :
     currentClientId(-1)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::Window); 
 
     // Подключаем кнопки
     connect(ui->btnBack, &QPushButton::clicked, this, &SecondForm::onBackButtonClicked);
@@ -61,10 +63,11 @@ void SecondForm::loadTransactions()
     QString amountFilter = ui->filterAmountEdit->text().trimmed();
     QString typeFilter = ui->filterTypeCombo->currentText();
 
+    // Исправленный SQL-запрос с именованными параметрами
     QString sqlstr = "SELECT t.id, t.deposit_id, t.amount, t.date, t.type "
                      "FROM Transaction t "
                      "JOIN Deposit d ON t.deposit_id = d.id "
-                     "WHERE d.client_id = ?";
+                     "WHERE d.client_id = :client_id";  // Заменили ? на :client_id
 
     // Добавляем фильтры
     QStringList conditions;
@@ -80,7 +83,10 @@ void SecondForm::loadTransactions()
 
     QSqlQuery query(dbconn);
     query.prepare(sqlstr);
-    query.bindValue(":client_id", currentClientId);
+    
+    // Корректная привязка параметров
+    query.bindValue(":client_id", currentClientId); // Теперь параметр именованный
+    
     if (!dateFilter.isEmpty())
         query.bindValue(":date", dateFilter);
     if (!amountFilter.isEmpty())
@@ -112,12 +118,12 @@ void SecondForm::loadTransactions()
     ui->transactionTable->resizeColumnsToContents();
 }
 
+// Измененный метод возврата
 void SecondForm::onBackButtonClicked()
 {
     this->hide();
-    parentWidget()->show();
+    emit returnToMainWindow();  // Используем сигнал вместо parentWidget()
 }
-
 void SecondForm::onFilterButtonClicked()
 {
     loadTransactions();
