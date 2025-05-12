@@ -6,135 +6,238 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>1000</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Main Window</string>
   </property>
-  <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QWidget" name="leftPanel" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="labelFirstName">
-         <property name="text">
-          <string>First Name</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="firstNameEdit"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelLastName">
-         <property name="text">
-          <string>Last Name</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lastNameEdit"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelPhone">
-         <property name="text">
-          <string>Phone</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="phoneEdit"/>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="buttonLayout">
-         <item>
-          <widget class="QPushButton" name="btnAdd">
-           <property name="text">
-            <string>Add</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnEdit">
-           <property name="text">
-            <string>Edit</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnDel">
-           <property name="text">
-            <string>Del</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelSqlDrivers">
-         <property name="text">
-          <string>SQL drivers: QODBC,QMYSQL,QODBC,QPSQL,QPSQL7</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelRows">
-         <property name="text">
-          <string>Read 0 rows</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+     <widget class="QLabel" name="labelSqlDrivers">
+      <property name="text">
+       <string>Драйверы SQL:</string>
+      </property>
      </widget>
     </item>
     <item>
-     <widget class="QTableWidget" name="dataTable">
-      <property name="columnCount">
-       <number>3</number>
+     <widget class="QLabel" name="labelRows">
+      <property name="text">
+       <string>Прочитано 0 строк</string>
       </property>
-      <column>
-       <property name="text">
-        <string>First Name</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Last Name</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Phone</string>
-       </property>
-      </column>
      </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="clientLayout">
+        <item>
+         <widget class="QLabel" name="clientTableLabel">
+          <property name="text">
+           <string>Клиенты</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="clientTable"/>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="clientFormLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelFirstName">
+            <property name="text">
+             <string>Имя:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="clientFirstNameEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelLastName">
+            <property name="text">
+             <string>Фамилия:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="clientLastNameEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="labelPhone">
+            <property name="text">
+             <string>Телефон:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="clientPhoneEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="clientButtonsLayout">
+          <item>
+           <widget class="QPushButton" name="btnAddClient">
+            <property name="text">
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnEditClient">
+            <property name="text">
+             <string>Edit</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnDelClient">
+            <property name="text">
+             <string>Delete</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="documentLayout">
+        <item>
+         <widget class="QLabel" name="documentTableLabel">
+          <property name="text">
+           <string>Документы</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="documentTable"/>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="documentFormLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelPassport">
+            <property name="text">
+             <string>Номер паспорта:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="docPassportEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelBirthDate">
+            <property name="text">
+             <string>Дата рождения:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="docBirthDateEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="labelGender">
+            <property name="text">
+             <string>Пол:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="docGenderEdit"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="labelSecurityWord">
+            <property name="text">
+             <string>Секретное слово:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="docSecurityWordEdit"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="labelStatus">
+            <property name="text">
+             <string>Статус:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="docStatusEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="documentButtonsLayout">
+          <item>
+           <widget class="QPushButton" name="btnAddDocument">
+            <property name="text">
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnEditDocument">
+            <property name="text">
+             <string>Edit</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnDelDocument">
+            <property name="text">
+             <string>Delete</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="actionButtonsLayout">
+      <item>
+       <widget class="QPushButton" name="btnSave">
+        <property name="text">
+         <string>Save</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnToForm2">
+        <property name="text">
+         <string>Go to Form 2</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
+  <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>600</width>
-     <height>26</height>
+     <width>1000</width>
+     <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionConnect"/>
+    <addaction name="actionSelectAll"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionConnect"/>
-   <addaction name="actionSelectAll"/>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionConnect">
    <property name="text">
     <string>Connect</string>
@@ -146,7 +249,6 @@
    </property>
   </action>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
 </ui>

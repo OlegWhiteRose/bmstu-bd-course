@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSqlDatabase>
+#include "secondform.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,14 +20,21 @@ public:
 public slots:
     void dbconnect();
     void selectAll();
-    void addRecord();     // Для кнопки Add
-    void editRecord();    // Для кнопки Edit
-    void deleteRecord();  // Для кнопки Del
-    void onTableSelectionChanged(); // Новый слот для обработки выбора строки
+    void addClientRecord();
+    void editClientRecord();
+    void deleteClientRecord();
+    void addDocumentRecord();
+    void editDocumentRecord();
+    void deleteDocumentRecord();
+    void onClientTableSelectionChanged();
+    void onDocumentTableSelectionChanged();
+    void saveChanges();
+    void openSecondForm();
 
 private:
     Ui::MainWindow *ui;
     QSqlDatabase dbconn;
+    SecondForm *secondForm;
 };
 
 #endif // MAINWINDOW_H
